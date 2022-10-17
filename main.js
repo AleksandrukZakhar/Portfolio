@@ -17,6 +17,7 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 const orbitControl = new OrbitControls(camera, renderer.domElement);
+orbitControl.enableZoom = false;
 
 scene.background = new THREE.CubeTextureLoader()
     .setPath("./assets/")

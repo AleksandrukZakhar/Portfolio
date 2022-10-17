@@ -15,11 +15,18 @@
 
 $white-primary: hsl(0, 0%, 100%);
 $black-primary: hsl(0, 0%, 0%);
+$html-color: hsl(14, 100%, 57%);
+$css-color: hsl(220, 100%, 45%);
+$js-color: hsl(52, 100%, 50%);
+$sass-color: hsl(330, 51%, 61%);
+$react-color: hsl(192, 95%, 68%);
+$git-color: hsl(9, 86%, 57%);
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
     font-family: "Open Sans", sans-serif;
 }
 
@@ -65,4 +72,58 @@ header {
     100% {
         opacity: 100;
     }
+}
+
+.skills-section {
+    @include flex(column, center, center);
+
+    width: 100vw;
+    height: 100vh;
+    gap: 4rem;
+    color: $white-primary;
+    background-color: $black-primary;
+
+    h2 {
+        font-size: 6rem;
+    }
+}
+
+.skills-container {
+    @include flex(row, center, center, wrap);
+
+    width: 100vw;
+    gap: 4rem;
+
+    div {
+        @include flex(column, center, center);
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+}
+
+#icon-1 {
+    color: $html-color;
+}
+
+#icon-2 {
+    color: $css-color;
+}
+
+#icon-3 {
+    color: $js-color;
+}
+
+#icon-4 {
+    color: $sass-color;
+}
+
+#icon-5 {
+    color: $react-color;
+}
+
+#icon-6 {
+    color: $git-color;
 }
