@@ -21,6 +21,7 @@ $js-color: hsl(52, 100%, 50%);
 $sass-color: hsl(330, 51%, 61%);
 $react-color: hsl(192, 95%, 68%);
 $git-color: hsl(9, 86%, 57%);
+$bluish-black: hsl(227, 91%, 9%);
 
 * {
     margin: 0;
@@ -126,4 +127,33 @@ header {
 
 #icon-6 {
     color: $git-color;
+}
+
+.project-section {
+    @include flex(column, center, center);
+
+    width: 100vw;
+    height: 100vh;
+    gap: 2rem;
+    color: $white-primary;
+    background-color: $bluish-black;
+
+    p {
+        width: 30vw;
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+footer {
+    @include flex(row, center, center);
+
+    width: 100vw;
+    height: 4rem;
+    color: $white-primary;
+    background-color: $black-primary;
 }
