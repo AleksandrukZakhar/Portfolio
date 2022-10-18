@@ -28,7 +28,35 @@ $bluish-black: hsl(227, 91%, 9%);
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    color: $white-primary;
     font-family: "Open Sans", sans-serif;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.show {
+    opacity: 100;
+    animation: normal slide 1s;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateX(-60vw);
+    }
+
+    100% {
+        opacity: 100;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .show {
+        transition: none;
+    }
 }
 
 header {
@@ -36,43 +64,19 @@ header {
 
     width: 100vw;
     height: 100vh;
-    color: $white-primary;
-    background-color: $black-primary;
+    background-color: transparent;
 
     h1 {
         position: relative;
-        z-index: 2;
-        animation: normal slide 1.5s;
-    }
-
-    canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        animation: normal fade-in 1.5s;
+        text-align: center;
     }
 }
 
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(-40vh);
-    }
-
-    100% {
-        opacity: 100;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 100;
-    }
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .skills-section {
@@ -81,8 +85,7 @@ header {
     width: 100vw;
     height: 100vh;
     gap: 4rem;
-    color: $white-primary;
-    background-color: $black-primary;
+    background-color: transparent;
 
     h2 {
         font-size: 6rem;
@@ -98,10 +101,32 @@ header {
     div {
         @include flex(column, center, center);
 
+        gap: 0.2rem;
+
         p {
             font-size: 1.5rem;
             font-weight: 600;
         }
+    }
+
+    div:nth-child(2) {
+        animation-duration: 1.2s;
+    }
+
+    div:nth-child(3) {
+        animation-duration: 1.5s;
+    }
+
+    div:nth-child(4) {
+        animation-duration: 1.8s;
+    }
+
+    div:nth-child(5) {
+        animation-duration: 2.1s;
+    }
+
+    div:nth-child(6) {
+        animation-duration: 2.4s;
     }
 }
 
@@ -135,17 +160,10 @@ header {
     width: 100vw;
     height: 100vh;
     gap: 2rem;
-    color: $white-primary;
-    background-color: $bluish-black;
+    background-color: transparent;
 
     p {
-        width: 30vw;
-    }
-
-    canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
+        width: 40vw;
     }
 }
 
@@ -154,6 +172,5 @@ footer {
 
     width: 100vw;
     height: 4rem;
-    color: $white-primary;
-    background-color: $black-primary;
+    background-color: $bluish-black;
 }
