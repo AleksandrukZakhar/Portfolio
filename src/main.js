@@ -6,8 +6,8 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import "./style.scss";
-import MarsMap from "./assets/Mars.jpg";
-import MarsNormalMap from "./assets/Mars-Normal.jpg";
+import MarsMap from "./assets/Mars.webp";
+import MarsNormalMap from "./assets/Mars-Normal.webp";
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -53,20 +53,17 @@ scene.add(mars);
 
 let model = null;
 
-const phone = new GLTFLoader().load(
-    "./assets/google_pixel_6_pro/scene.gltf",
-    (x) => {
-        model = x.scene.children[0];
+const phone = new GLTFLoader().load("/portfolio/assets/scene.gltf", (x) => {
+    model = x.scene.children[0];
 
-        model.visible = false;
-        model.position.setX(50);
-        model.position.setY(50);
-        model.scale.set(7, 7, 7);
-        model.rotateX(-0.5);
-        model.rotateZ(15);
-        scene.add(model);
-    }
-);
+    model.visible = false;
+    model.position.setX(50);
+    model.position.setY(50);
+    model.scale.set(7, 7, 7);
+    model.rotateX(-0.5);
+    model.rotateZ(15);
+    scene.add(model);
+});
 
 camera.position.set(-10, 30, 30);
 orbitControl.update();

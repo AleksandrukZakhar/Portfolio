@@ -53,12 +53,6 @@ $bluish-black: hsl(227, 91%, 9%);
     }
 }
 
-@media (prefers-reduced-motion) {
-    .show {
-        transition: none;
-    }
-}
-
 header {
     @include flex(row, center, center);
 
@@ -173,4 +167,16 @@ footer {
     width: 100vw;
     height: 4rem;
     background-color: $bluish-black;
+}
+
+@media (max-width: 500px) {
+    .skills-container {
+        gap: 2rem;
+    }
+
+    .project-section {
+        p {
+            width: 60vw;
+        }
+    }
 }
