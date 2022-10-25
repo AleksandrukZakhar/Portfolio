@@ -4,7 +4,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import "./style.scss";
 import MarsMap from "./assets/Mars.webp";
 import MarsNormalMap from "./assets/Mars-Normal.webp";
@@ -21,7 +20,6 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 const orbitControl = new OrbitControls(camera, renderer.domElement);
-orbitControl.enableZoom = false;
 
 const pass = new RenderPass(scene, camera);
 const composer = new EffectComposer(renderer);
@@ -50,20 +48,6 @@ const mars = new THREE.Mesh(
 );
 mars.position.setY(50);
 scene.add(mars);
-
-let model = null;
-
-const phone = new GLTFLoader().load("/portfolio/assets/scene.gltf", (x) => {
-    model = x.scene.children[0];
-
-    model.visible = false;
-    model.position.setX(50);
-    model.position.setY(50);
-    model.scale.set(7, 7, 7);
-    model.rotateX(-0.5);
-    model.rotateZ(15);
-    scene.add(model);
-});
 
 camera.position.set(-10, 30, 30);
 orbitControl.update();
@@ -103,7 +87,7 @@ const slideIn = (duration) => {
     });
 };
 
-slideIn(3);
+slideIn(2);
 
 const animate = () => {
     composer.render();
@@ -123,29 +107,3 @@ const animObserver = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll(".hidden").forEach((el) => animObserver.observe(el));
-
-const phoneObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            gsap.to(mars.position, { y: 100, duration: 2 });
-
-            window.setTimeout(() => {
-                dLight.intensity = 10;
-                model.visible = true;
-            }, [2000]);
-
-            gsap.to(model.position, { y: 0, duration: 1, delay: 2 });
-        } else {
-            gsap.to(model.position, { y: 100, duration: 2 });
-
-            window.setTimeout(() => {
-                dLight.intensity = 0.1;
-                model.position.setY(50);
-                model.visible = false;
-                slideIn(2);
-            }, [2000]);
-        }
-    });
-});
-
-phoneObserver.observe(document.querySelector("p.hidden"));

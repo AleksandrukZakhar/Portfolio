@@ -149,15 +149,40 @@ canvas {
 }
 
 .project-section {
-    @include flex(column, center, center);
+    @include flex(row, center, center);
 
     width: 100vw;
     height: 100vh;
     gap: 2rem;
     background-color: transparent;
+}
+
+.project-container {
+    @include flex(column, center, center);
+
+    max-width: 640px;
+    gap: 1rem;
+    border: 0;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 8%, 0.6);
+
+    div {
+        overflow: hidden;
+    }
+
+    img {
+        width: 640px;
+        height: 427px;
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
 
     p {
-        width: 40vw;
+        width: 90%;
+        padding-bottom: 1rem;
     }
 }
 
@@ -169,14 +194,24 @@ footer {
     background-color: $bluish-black;
 }
 
-@media (max-width: 500px) {
-    .skills-container {
-        gap: 2rem;
-    }
+@media (max-width: 900px) {
+    .project-container {
+        max-width: 400px;
 
-    .project-section {
-        p {
-            width: 60vw;
+        img {
+            width: 400px;
+            height: 266px;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .project-container {
+        max-width: 300px;
+
+        img {
+            width: 300px;
+            height: 200px;
         }
     }
 }
